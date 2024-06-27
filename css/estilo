@@ -1,0 +1,365 @@
+
+@import url("https://unpkg.com/papercss@1.9.2/dist/paper.css") layer(csspaper);
+
+.card-list:has(li:hover) li:not(:hover) {
+  filter: blur(2px)
+}
+
+/* Demo style */
+body {
+  min-height: 100vh;
+  background-color: #f6eee3;
+  background-size: 20px 20px;
+  background-image:  repeating-linear-gradient(0deg, #e5decf, #e5decf 1px, #f6eee3 1px, #f6eee3);
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin: 0 0 2rem;  
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  transition: all 150ms ease-in-out;
+}
+
+li::before {
+  content: "";
+}
+
+img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  margin-bottom: .6rem;
+}
+
+a {
+  background: none;
+}
+
+.paper {
+  padding: 1.5rem;
+}
+
+li a {
+  padding-inline-start: 1rem;
+}
+
+
+
+
+
+.wrap {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	width: 85vmin;
+	height: 65vmin;
+	margin: 2rem auto;
+	border: 8px solid;
+	border-image: linear-gradient(
+			-50deg,
+            rgb(111, 77, 109), /* Un tono tierra claro */
+            #b1a3b5, /* Un gris beige */
+            rgb(160, 72, 119), /* Un tono tierra más claro */
+            rgb(200, 160, 197), /* Un tono arena */
+            rgb(230, 173, 208), /* Azul claro */
+            #da8cf0, /* Amarillo claro */
+            #da20d4 /* Dorado */
+		)
+		1;
+	transition: 0.3s ease-in-out;
+	position: relative;
+	overflow: hidden;
+}
+.overlay {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 1rem 0.75rem;
+	background: #9f6f9c; /* Un tono mostaza */
+	transition: 0.4s ease-in-out;
+	z-index: 1;
+}
+.overlay-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 15vmin;
+	height: 100%;
+	padding: 0.5rem 0 0 0.5rem;
+	border: 3px solid;
+	border-image: linear-gradient(
+			to bottom,
+			#ae247b 5%,
+			rgb(227, 132, 229) 35% 65%,
+			#ac24ae 95%
+		)
+		0 0 0 100%;
+	transition: 0.3s ease-in-out 0.2s;
+	z-index: 1;
+}
+.image-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60vmin;
+	height: 100%;
+	
+	background-size: cover;
+	transition: 0.3s ease-in-out;
+	/* border: 1px solid green; */
+}
+
+.wrap .image-content {
+background-image: url("/fotos_eventos/corazon_eventos.jpg");
+}
+
+.inset {
+	max-width: 50%;
+	margin: 0.25em 1em 1em 0;
+	border-radius: 0.25em;
+	float: left;
+}
+
+.dots {
+	position: absolute;
+	bottom: 1rem;
+	right: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 55px;
+	height: 4vmin;
+	transition: 0.3s ease-in-out 0.3s;
+}
+.dot {
+	width: 14px;
+	height: 14px;
+	background: rgb(255, 0, 153);
+	border: 1px solid indigo;
+	border-radius: 50%;
+	transition: 0.3s ease-in-out 0.3s;
+}
+
+.text {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60vmin;
+	height: 100%;
+	padding: 3vmin 4vmin;
+	background: #fff;
+	box-shadow: inset 1px 1px 15px 0 rgba(0, 0, 0, 0.4);
+	overflow-y: scroll;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #dfe9eb00;
+  }
+
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #beb8c200;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #8b5287;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #cd9dbd;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #492e49;
+  }
+
+.wrap:hover .overlay {
+	transform: translateX(-60vmin);
+}
+.wrap:hover .image-content {
+	width: 30vmin;
+}
+.wrap:hover .overlay-content {
+	border: none;
+	transition-delay: 0.2s;
+	transform: translateX(60vmin);
+}
+.wrap:hover .dots {
+	transform: translateX(1rem);
+}
+.wrap:hover .dots .dot {
+	background: white;
+}
+
+/* Animations and timing delays */
+.animate {
+	animation-duration: 0.7s;
+	animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+	animation-fill-mode: backwards;
+}
+/* Pop In */
+.pop {
+	animation-name: pop;
+}
+@keyframes pop {
+	0% {
+		opacity: 0;
+		transform: scale(0.5, 0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+}
+
+/* Slide In */
+.slide {
+	animation-name: slide;
+}
+@keyframes slide {
+	0% {
+		opacity: 0;
+		transform: translate(4em, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+/* Slide Left */
+.slide-left {
+	animation-name: slide-left;
+}
+@keyframes slide-left {
+	0% {
+		opacity: 0;
+		transform: translate(-40px, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+.slide-up {
+	animation-name: slide-up;
+}
+@keyframes slide-up {
+	0% {
+		opacity: 0;
+		transform: translateY(3em);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.delay-1 {
+	animation-delay: 0.3s;
+}
+.delay-2 {
+	animation-delay: 0.6s;
+}
+.delay-3 {
+	animation-delay: 0.9s;
+}
+.delay-4 {
+	animation-delay: 1.2s;
+}
+.delay-5 {
+	animation-delay: 1.5s;
+}
+.delay-6 {
+	animation-delay: 1.8s;
+}
+.delay-7 {
+	animation-delay: 2.1s;
+}
+.delay-8 {
+	animation-delay: 2.4s;
+}
+
+
+.contenedir{
+	display: block;
+}
+
+
+.containerlinea {
+    position: absolute;
+    width: 100px; /* Ancho de la línea */
+    height: 100%; /* Altura total de la línea */
+    transform: translatey(-3118px) translateX(300px);
+  }
+  
+  .line {
+    width: 2px; /* Grosor de la línea */
+    height: 3000px; /* Altura de la línea */
+    background-color: #333; /* Color de la línea */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .circle {
+    width: 10px; /* Diámetro del círculo */
+    height: 10px; /* Diámetro del círculo */
+    border-radius: 50%; /* Forma de círculo */
+    background-color: #333; /* Color del círculo */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -5px; /* Mitad del tamaño para centrar verticalmente */
+  }
+  
+  
+  .botonatras{
+    width: 350px;
+    position: fixed;
+}
+
+.fotoindex{
+    background-image: url("../fotos/indexfoto.png");
+    width: 380px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    transform: translateX(500px) translateY(-10px);
+}
+
+.cajitadecoments1{
+
+	display: flex;
+	justify-content: center;
+}
